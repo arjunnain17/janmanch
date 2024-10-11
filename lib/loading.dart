@@ -4,7 +4,7 @@ import 'dart:async';
 void main() {
     runApp(MyApp());
 }
-// test.
+
 class MyApp extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
@@ -21,8 +21,8 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen>
         with SingleTickerProviderStateMixin {
-    AnimationController _controller;
-    Animation<double> _animation;
+    late AnimationController _controller;
+    late Animation<double> _animation;
 
     @override
     void initState() {
