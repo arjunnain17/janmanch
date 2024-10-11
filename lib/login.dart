@@ -13,6 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   final _aadharController = TextEditingController();
   final _panController = TextEditingController();
   final _phoneController = TextEditingController();
+  final _passwordController = TextEditingController(); // New password controller
 
   @override
   void dispose() {
@@ -20,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     _aadharController.dispose();
     _panController.dispose();
     _phoneController.dispose();
+    _passwordController.dispose(); // Dispose password controller
     super.dispose();
   }
 
@@ -30,10 +32,25 @@ class _LoginPageState extends State<LoginPage> {
       print('Aadhaar: ${_aadharController.text}');
       print('PAN: ${_panController.text}');
       print('Phone: ${_phoneController.text}');
+      print('Password: ${_passwordController.text}');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Form submitted successfully!')),
       );
     }
+  }
+
+  // Helper method to validate password
+  String? _validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a password';
+    }
+    if (value.length < 8) {
+      return 'Password must be at least 8 characters long';
+    }
+    if (!RegExp(r'\d').hasMatch(value)) {
+      return 'Password must contain at least one number';
+    }
+    return null;
   }
 
   @override
@@ -92,6 +109,12 @@ class _LoginPageState extends State<LoginPage> {
                   }
                   return null;
                 },
+              ),
+              TextFormField(
+                controller: _passwordController, // Password field
+                decoration: const InputDecoration(labelText: 'Password'),
+                obscureText: true,
+                validator: _validatePassword, // Use the custom validator
               ),
               const SizedBox(height: 20),
               ElevatedButton(
