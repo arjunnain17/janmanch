@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Janmanch',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 22, 218, 179)),
         useMaterial3: true,
@@ -22,37 +22,68 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _isHovered = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('Welcome to Flutter Demo Home Page'),
-            const SizedBox(height: 20),
+            MouseRegion(
+              onEnter: (_) {
+                setState(() {
+                  _isHovered = true;
+                });
+              },
+              onExit: (_) {
+                setState(() {
+                  _isHovered = false;
+                });
+              },
+              child: AnimatedDefaultTextStyle(
+                style: _isHovered
+                    ? const TextStyle(
+                        fontSize: 36,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      )
+                    : const TextStyle(
+                        fontSize: 28,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
+                      ),
+                duration: const Duration(milliseconds: 300),
+                child: const Text('Welcome to Janmanch'),
+              ),
+            ),
+            const SizedBox(height: 40),
+            // Login Button
             ElevatedButton(
               onPressed: () {
-                // Navigate to the LoginPage
+                // Implement login page or leave empty
+              },
+              child: const Text('Login'),
+            ),
+            const SizedBox(height: 20), // Space between buttons
+            // Signup Button
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the LoginPage (used as Signup for now)
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const LoginPage()),
                 );
               },
-              child: const Text('Go to Login Page'),
+              child: const Text('Signup'),
             ),
           ],
         ),
