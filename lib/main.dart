@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login.dart'; // Import the new login.dart file
+import 'login.dart'; // Import the login.dart file
+import 'log.dart';   // Import the log.dart file
 
 void main() {
   runApp(const MyApp());
@@ -69,7 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
             // Login Button
             ElevatedButton(
               onPressed: () {
-                // Implement login page or leave empty
+                // Navigate to the log.dart page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LogPage()), // Assuming LogPage is in log.dart
+                );
               },
               child: const Text('Login'),
             ),
