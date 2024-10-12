@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 22, 218, 179)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const LoadingScreen(),  // Set LoadingScreen as the initial screen
     );
   }
 }
