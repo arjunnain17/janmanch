@@ -8,13 +8,10 @@ class BusinessLandingPage extends StatefulWidget {
 }
 
 class _BusinessLandingPageState extends State<BusinessLandingPage> {
-  // Sample data for products
-  List<String> products = ["Product 1", "Product 2", "Product 3", "Product 4", "Product 5", "Product 6"];
-  
   // Sample data for user reviews
   List<Map<String, dynamic>> userReviews = [
     {
-      'profilePic': 'https://example.com/john_doe.jpg', // Replace with actual image URL
+      'profilePic': 'assets/Jan-manch-logo.png', // Replace with actual image URL
       'name': 'John Doe',
       'review': 'Great service and products!'
     },
@@ -35,6 +32,16 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
     },
   ];
 
+  // Sample data for product images
+  List<String> productImages = [
+    'assets/products.png', // Image for Product 1
+    'https://example.com/image2.png', // Image for Product 2
+    'https://example.com/image3.png', // Image for Product 3
+    'https://example.com/image4.png', // Image for Product 4
+    'https://example.com/image5.png', // Image for Product 5
+    'https://example.com/image6.png', // Image for Product 6
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +51,7 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
           // Profile picture with popup menu
           PopupMenuButton<String>(
             icon: CircleAvatar(
-              backgroundImage: NetworkImage('https://example.com/business_owner.jpg'), // Replace with actual image URL
+              backgroundImage: NetworkImage('assets/Jan-manch-logo.png'), // Replace with actual image URL
             ),
             onSelected: (value) {
               if (value == 'Business Management') {
@@ -72,7 +79,7 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Your Products Section
+              // Your Images Section
               const Text(
                 'Your Products',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -82,20 +89,31 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, // 3 items per row
+                  crossAxisCount: 3, // 3 images per row
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  childAspectRatio: 1.5, // Adjust aspect ratio for smaller icons
+                  childAspectRatio: 1, // Adjust aspect ratio for square images
                 ),
-                itemCount: products.length,
+                itemCount: productImages.length, // Use the length of productImages
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 4,
-                    child: Center(
-                      child: Text(
-                        products[index],
-                        style: const TextStyle(fontSize: 14), // Smaller text size
-                      ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Display individual images
+                        Image.network(
+                          productImages[index], // Use the corresponding image URL
+                          width: 150, // Adjust the width as necessary
+                          height: 150, // Adjust the height as necessary
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(height: 8),
+                        const Text(
+                          '', // You can customize the text for each product if needed
+                          style: TextStyle(fontSize: 14), // Smaller text size
+                        ),
+                      ],
                     ),
                   );
                 },
