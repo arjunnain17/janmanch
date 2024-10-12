@@ -16,17 +16,17 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
       'review': 'Great service and products!'
     },
     {
-      'profilePic': 'https://example.com/jane_smith.jpg', // Replace with actual image URL
+      'profilePic': 'assets/Jan-manch-logo.png', // Replace with actual image URL
       'name': 'Jane Smith',
       'review': 'Really enjoyed my experience.'
     },
     {
-      'profilePic': 'https://example.com/alice_johnson.jpg', // Replace with actual image URL
+      'profilePic': 'assets/Jan-manch-logo.png', // Replace with actual image URL
       'name': 'Alice Johnson',
       'review': 'The best business I have dealt with so far.'
     },
     {
-      'profilePic': 'https://example.com/bob_lee.jpg', // Replace with actual image URL
+      'profilePic': 'assets/Jan-manch-logo.png', // Replace with actual image URL
       'name': 'Bob Lee',
       'review': 'Exceptional customer service!'
     },
