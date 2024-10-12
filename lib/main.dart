@@ -3,6 +3,8 @@ import 'login.dart'; // Import the login.dart file
 import 'log.dart';   // Import the log.dart file
 import 'loading.dart'; // Import the loading.dart file
 import 'option.dart'; // Import the options.dart file
+import 'categories.dart'; // Import the categories.dart file
+
 void main() {
   runApp(const MyApp());
 }
@@ -75,37 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.end, // Align buttons at the bottom
             children: [
               const SizedBox(height: 40), // Space before the buttons
-              
-              // Login for Business Button
-              MouseRegion(
-                onEnter: (_) {
-                  setState(() {
-                    _isHovered = true;
-                  });
-                },
-                onExit: (_) {
-                  setState(() {
-                    _isHovered = false;
-                  });
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  transform: Matrix4.translationValues(0, _isHovered ? -5 : 0, 0), // Bouncy effect
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Add the logic for business login here
-                      print('Login for Business pressed');
-                    },
-                    child: const Text('Login as Business'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40), // Increase button size
-                      textStyle: const TextStyle(fontSize: 18), // Increase font size
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20), // Space between buttons
-
               // Login Button
               MouseRegion(
                 onEnter: (_) {
@@ -129,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialPageRoute(builder: (context) => const LogPage()), // Assuming LogPage is in log.dart
                       );
                     },
-                    child: const Text('Login as Customer'),
+                    child: const Text('Login'),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40), // Increase button size
                       textStyle: const TextStyle(fontSize: 18), // Increase font size
@@ -138,7 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               const SizedBox(height: 20), // Space between buttons
-
               // Signup Button
               MouseRegion(
                 onEnter: (_) {
