@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'login.dart'; // Import the login.dart file
 import 'log.dart';   // Import the log.dart file
-
-
+import 'loading.dart'; // Import the loading.dart file
+import 'option.dart'; // Import the options.dart file
 void main() {
   runApp(const MyApp());
 }
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 22, 218, 179)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const LoadingScreen(),  // Set LoadingScreen as the initial screen
     );
   }
 }
