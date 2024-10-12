@@ -34,12 +34,12 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
 
   // Sample data for product images
   List<String> productImages = [
-    'assets/products.png', // Image for Product 1
-    'assets/products2.png', // Image for Product 2
-    'assets/services.png', // Image for Product 3
-    'assets/services2.png', // Image for Product 4
-    'assets/groceries.png', // Image for Product 5
-    'assets/groceries2.png', // Image for Product 6
+    'assets/pottery1.png', // Image for Product 1
+    'assets/pottery2.png', // Image for Product 2
+    'assets/pottery3.png', // Image for Product 3
+    'assets/pottery4.png', // Image for Product 4
+    'assets/pottery5.png', // Image for Product 5
+    'assets/pottery6.png', // Image for Product 6
   ];
 
   @override

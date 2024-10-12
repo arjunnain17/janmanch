@@ -64,6 +64,12 @@ flutter:
     - assets/services2.png
     - assets/products2.png
     - assets/groceries2.png
+    - assets/pottery1.png
+    - assets/pottery2.png
+    - assets/pottery3.png
+    - assets/pottery4.png
+    - assets/pottery5.png
+    - assets/pottery6.png
 
 
   # To add assets to your application, add an assets section, like this:
