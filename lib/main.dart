@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login.dart'; // Import the login.dart file
 import 'log.dart';   // Import the log.dart file
-import 'loading.dart'; // Import the loading.dart file
+
 
 void main() {
   runApp(const MyApp());
