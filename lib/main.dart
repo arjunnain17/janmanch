@@ -59,12 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: _isHovered
                     ? const TextStyle(
                         fontSize: 36,
-                        color: Colors.blue,
+                        color: Colors.white, // White color when hovered
                         fontWeight: FontWeight.bold,
                       )
                     : const TextStyle(
                         fontSize: 28,
-                        color: Colors.black,
+                        color: Colors.white, // White color by default
                         fontWeight: FontWeight.normal,
                       ),
                 duration: const Duration(milliseconds: 300),
