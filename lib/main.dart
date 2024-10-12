@@ -3,6 +3,8 @@ import 'login.dart'; // Import the login.dart file
 import 'log.dart';   // Import the log.dart file
 import 'loading.dart'; // Import the loading.dart file
 import 'option.dart'; // Import the options.dart file
+import 'categories.dart'; // Import the categories.dart file
+
 void main() {
   runApp(const MyApp());
 }
@@ -131,6 +133,38 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                     },
                     child: const Text('Signup'),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40), // Increase button size
+                      textStyle: const TextStyle(fontSize: 18), // Increase font size
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20), // Space between buttons
+              // Categories Button (newly added)
+              MouseRegion(
+                onEnter: (_) {
+                  setState(() {
+                    _isHovered = true;
+                  });
+                },
+                onExit: (_) {
+                  setState(() {
+                    _isHovered = false;
+                  });
+                },
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  transform: Matrix4.translationValues(0, _isHovered ? -5 : 0, 0), // Bouncy effect
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Navigate to CategoriesPage in categories.dart
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const CategoriesPage()), // Assuming CategoriesPage is in categories.dart
+                      );
+                    },
+                    child: const Text('Categories'),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40), // Increase button size
                       textStyle: const TextStyle(fontSize: 18), // Increase font size
