@@ -9,19 +9,29 @@ class BusinessLandingPage extends StatefulWidget {
 
 class _BusinessLandingPageState extends State<BusinessLandingPage> {
   // Sample data for products
-  List<String> products = ["Product 1", "Product 2", "Product 3", "Product 4"];
+  List<String> products = ["Product 1", "Product 2", "Product 3", "Product 4", "Product 5", "Product 6"];
   
   // Sample data for user reviews
   List<Map<String, dynamic>> userReviews = [
     {
-      'profilePic': 'https://via.placeholder.com/50', // Use placeholder image for now
+      'profilePic': 'https://via.placeholder.com/50', // Placeholder image
       'name': 'John Doe',
       'review': 'Great service and products!'
     },
     {
-      'profilePic': 'https://via.placeholder.com/50', // Use placeholder image for now
+      'profilePic': 'https://via.placeholder.com/50', // Placeholder image
       'name': 'Jane Smith',
       'review': 'Really enjoyed my experience.'
+    },
+    {
+      'profilePic': 'https://via.placeholder.com/50', // Placeholder image
+      'name': 'Alice Johnson',
+      'review': 'The best business I have dealt with so far.'
+    },
+    {
+      'profilePic': 'https://via.placeholder.com/50', // Placeholder image
+      'name': 'Bob Lee',
+      'review': 'Exceptional customer service!'
     },
   ];
 
@@ -72,10 +82,10 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                  crossAxisCount: 3, // 3 items per row
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  childAspectRatio: 3 / 2,
+                  childAspectRatio: 1.5, // Adjust aspect ratio for smaller icons
                 ),
                 itemCount: products.length,
                 itemBuilder: (context, index) {
@@ -84,7 +94,7 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
                     child: Center(
                       child: Text(
                         products[index],
-                        style: const TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 14), // Smaller text size
                       ),
                     ),
                   );
@@ -98,9 +108,15 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
-              ListView.builder(
+              GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // 2 reviews per row
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 3, // Make cards more horizontal
+                ),
                 itemCount: userReviews.length,
                 itemBuilder: (context, index) {
                   return Card(
