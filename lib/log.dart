@@ -32,7 +32,6 @@ class _LogPageState extends State<LogPage> {
         context,
         MaterialPageRoute(builder: (context) => OptionsScreen()), // Navigate to OptionsScreen
       );
-
       // Display the login data (optional)
       print('Name: ${_nameController.text}');
       print('Aadhaar: ${_aadharController.text}');
@@ -46,78 +45,90 @@ class _LogPageState extends State<LogPage> {
       appBar: AppBar(
         title: const Text('Login Form'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: [
-              TextFormField(
-                controller: _nameController,
-                decoration: const InputDecoration(labelText: 'Full Name'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your full name';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _aadharController,
-                decoration: const InputDecoration(labelText: 'Aadhaar Number'),
-                keyboardType: TextInputType.number,
-                maxLength: 12,
-                validator: (value) {
-                  if (value == null || value.length != 12) {
-                    return 'Please enter a valid 12-digit Aadhaar number';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _passwordController,
-                decoration: const InputDecoration(labelText: 'Password'),
-                obscureText: true, // To hide the password input
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 20),
-              // "Login as Customer" button
-              ElevatedButton(
-                onPressed: () {
-                  // Validate the form first
-                  if (_formKey.currentState!.validate()) {
-                    // If valid, navigate to CategoriesPage
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CategoriesPage()), // Navigate to CategoriesPage
-                    );
-                  }
-                },
-                child: const Text('Login as Customer'),
-              ),
-              const SizedBox(height: 10), // Space between buttons
-              // "Login as Business" button
-              ElevatedButton(
-                onPressed: () {
-                  // Validate the form first
-                  if (_formKey.currentState!.validate()) {
-                    // If valid, navigate to BusinessLandingPage
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => BusinessLandingPage()), // Navigate to BusinessLandingPage
-                    );
-                  }
-                },
-                child: const Text('Login as Business'),
-              ),
-            ],
+      body: Stack(
+        children: [
+          // Background image
+          Positioned.fill(
+            child: Image.asset(
+              'assets/janmanchbackdrop.jpg', // Replace with your image asset path
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
+          // Foreground content
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: ListView(
+                children: [
+                  TextFormField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(labelText: 'Full Name'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your full name';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _aadharController,
+                    decoration: const InputDecoration(labelText: 'Aadhaar Number'),
+                    keyboardType: TextInputType.number,
+                    maxLength: 12,
+                    validator: (value) {
+                      if (value == null || value.length != 12) {
+                        return 'Please enter a valid 12-digit Aadhaar number';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(labelText: 'Password'),
+                    obscureText: true, // To hide the password input
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your password';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  // "Login as Customer" button
+                  ElevatedButton(
+                    onPressed: () {
+                      // Validate the form first
+                      if (_formKey.currentState!.validate()) {
+                        // If valid, navigate to CategoriesPage
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CategoriesPage()), // Navigate to CategoriesPage
+                        );
+                      }
+                    },
+                    child: const Text('Login as Customer'),
+                  ),
+                  const SizedBox(height: 10), // Space between buttons
+                  // "Login as Business" button
+                  ElevatedButton(
+                    onPressed: () {
+                      // Validate the form first
+                      if (_formKey.currentState!.validate()) {
+                        // If valid, navigate to BusinessLandingPage
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => BusinessLandingPage()), // Navigate to BusinessLandingPage
+                        );
+                      }
+                    },
+                    child: const Text('Login as Business'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

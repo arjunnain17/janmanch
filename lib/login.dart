@@ -5,9 +5,12 @@ class LoginPage extends StatefulWidget {
 
   @override
   _LoginPageState createState() => _LoginPageState();
+  
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _aadharController = TextEditingController();
@@ -59,71 +62,83 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: const Text('Signup Form'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: [
-              TextFormField(
-                controller: _nameController,
-                decoration: const InputDecoration(labelText: 'Full Name'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your name';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _aadharController,
-                decoration: const InputDecoration(labelText: 'Aadhaar Number'),
-                keyboardType: TextInputType.number,
-                maxLength: 12,
-                validator: (value) {
-                  if (value == null || value.length != 12) {
-                    return 'Please enter a valid 12-digit Aadhaar number';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _panController,
-                decoration: const InputDecoration(labelText: 'PAN Number'),
-                maxLength: 10,
-                validator: (value) {
-                  if (value == null || value.length != 10) {
-                    return 'Please enter a valid PAN number';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _phoneController,
-                decoration: const InputDecoration(labelText: 'Phone Number'),
-                keyboardType: TextInputType.phone,
-                maxLength: 10,
-                validator: (value) {
-                  if (value == null || value.length != 10) {
-                    return 'Please enter a valid 10-digit phone number';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _passwordController, // Password field
-                decoration: const InputDecoration(labelText: 'Password'),
-                obscureText: true,
-                validator: _validatePassword, // Use the custom validator
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _submitForm,
-                child: const Text('Submit'),
-              ),
-            ],
+      body: Stack(
+        children: [
+          // Background image
+          Positioned.fill(
+            child: Image.asset(
+              'assets/janmanchbackdrop.jpg', // Replace with your image asset path
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
+          // Foreground content
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: ListView(
+                children: [
+                  TextFormField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(labelText: 'Full Name'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your name';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _aadharController,
+                    decoration: const InputDecoration(labelText: 'Aadhaar Number'),
+                    keyboardType: TextInputType.number,
+                    maxLength: 12,
+                    validator: (value) {
+                      if (value == null || value.length != 12) {
+                        return 'Please enter a valid 12-digit Aadhaar number';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _panController,
+                    decoration: const InputDecoration(labelText: 'PAN Number'),
+                    maxLength: 10,
+                    validator: (value) {
+                      if (value == null || value.length != 10) {
+                        return 'Please enter a valid PAN number';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _phoneController,
+                    decoration: const InputDecoration(labelText: 'Phone Number'),
+                    keyboardType: TextInputType.phone,
+                    maxLength: 10,
+                    validator: (value) {
+                      if (value == null || value.length != 10) {
+                        return 'Please enter a valid 10-digit phone number';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _passwordController, // Password field
+                    decoration: const InputDecoration(labelText: 'Password'),
+                    obscureText: true,
+                    validator: _validatePassword, // Use the custom validator
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: _submitForm,
+                    child: const Text('Submit'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
