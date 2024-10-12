@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts; // Fix import for charts_flutter
 
 class BusinessLandingPage extends StatefulWidget {
   const BusinessLandingPage({super.key});
@@ -25,34 +24,6 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
       'review': 'Really enjoyed my experience.'
     },
   ];
-
-  // Sample data for sales statistics
-  List<charts.Series<SalesData, String>> _createSampleData() {
-    final data = [
-      SalesData('Jan', 100),
-      SalesData('Feb', 120),
-      SalesData('Mar', 90),
-      SalesData('Apr', 150),
-      SalesData('May', 80),
-      SalesData('Jun', 170),
-      SalesData('Jul', 140),
-      SalesData('Aug', 130),
-      SalesData('Sep', 110),
-      SalesData('Oct', 160),
-      SalesData('Nov', 200),
-      SalesData('Dec', 180),
-    ];
-
-    return [
-      charts.Series<SalesData, String>(
-        id: 'Sales',
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (SalesData sales, _) => sales.month,
-        measureFn: (SalesData sales, _) => sales.sales,
-        data: data,
-      )
-    ];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,33 +117,10 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
                 },
               ),
               const SizedBox(height: 20),
-
-              // Sales Statistics Section
-              const Text(
-                'Your Sale Statistics',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                height: 200,
-                padding: const EdgeInsets.all(8.0),
-                child: charts.BarChart(
-                  _createSampleData(),
-                  animate: true,
-                ),
-              ),
             ],
           ),
         ),
       ),
     );
   }
-}
-
-// Data class for sales statistics
-class SalesData {
-  final String month;
-  final int sales;
-
-  SalesData(this.month, this.sales);
 }
