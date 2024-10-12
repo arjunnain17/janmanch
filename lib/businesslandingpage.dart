@@ -14,22 +14,22 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
   // Sample data for user reviews
   List<Map<String, dynamic>> userReviews = [
     {
-      'profilePic': 'https://via.placeholder.com/50', // Placeholder image
+      'profilePic': 'https://example.com/john_doe.jpg', // Replace with actual image URL
       'name': 'John Doe',
       'review': 'Great service and products!'
     },
     {
-      'profilePic': 'https://via.placeholder.com/50', // Placeholder image
+      'profilePic': 'https://example.com/jane_smith.jpg', // Replace with actual image URL
       'name': 'Jane Smith',
       'review': 'Really enjoyed my experience.'
     },
     {
-      'profilePic': 'https://via.placeholder.com/50', // Placeholder image
+      'profilePic': 'https://example.com/alice_johnson.jpg', // Replace with actual image URL
       'name': 'Alice Johnson',
       'review': 'The best business I have dealt with so far.'
     },
     {
-      'profilePic': 'https://via.placeholder.com/50', // Placeholder image
+      'profilePic': 'https://example.com/bob_lee.jpg', // Replace with actual image URL
       'name': 'Bob Lee',
       'review': 'Exceptional customer service!'
     },
@@ -43,8 +43,8 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
         actions: [
           // Profile picture with popup menu
           PopupMenuButton<String>(
-            icon: const CircleAvatar(
-              backgroundImage: NetworkImage('https://via.placeholder.com/50'), // Replace with actual image URL
+            icon: CircleAvatar(
+              backgroundImage: NetworkImage('https://example.com/business_owner.jpg'), // Replace with actual image URL
             ),
             onSelected: (value) {
               if (value == 'Business Management') {
