@@ -58,6 +58,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/Jan-manch-logo.png
+    - assets/groceries.png
+    - assets/products.png
+    - assets/services.png
+    - assets/services2.png
+    - assets/products2.png
+    - assets/groceries2.png
 
 
   # To add assets to your application, add an assets section, like this:
