@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'option.dart'; // Make sure option.dart is imported to use OptionsScreen
+import 'businesslandingpage.dart'; // Import the BusinessLandingPage
 
 class LogPage extends StatefulWidget {
   const LogPage({super.key});
@@ -83,9 +84,24 @@ class _LogPageState extends State<LogPage> {
                 },
               ),
               const SizedBox(height: 20),
+              // Change Login button to "Login as Customer" (leading to nowhere)
               ElevatedButton(
-                onPressed: _submitForm,
-                child: const Text('Login'),
+                onPressed: () {
+                  // Do nothing when this button is pressed
+                },
+                child: const Text('Login as Customer'),
+              ),
+              const SizedBox(height: 10), // Space between buttons
+              // New "Login as Business" button
+              ElevatedButton(
+                onPressed: () {
+                  // Navigate to BusinessLandingPage
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BusinessLandingPage()), // Navigate to BusinessLandingPage
+                  );
+                },
+                child: const Text('Login as Business'),
               ),
             ],
           ),
