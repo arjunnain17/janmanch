@@ -12,23 +12,23 @@ class _BusinessLandingPageState extends State<BusinessLandingPage> {
   List<Map<String, dynamic>> userReviews = [
     {
       'profilePic': 'assets/Jan-manch-logo.png', // Replace with actual image URL
-      'name': 'John Doe',
-      'review': 'Great service and products!'
+      'name': 'Tanish',
+      'review': 'Great products! , Loved the Pottery!'
     },
     {
-      'profilePic': 'assets/Jan-manch-logo.png', // Replace with actual image URL
-      'name': 'Jane Smith',
-      'review': 'Really enjoyed my experience.'
+      'profilePic': 'https://example.com/jane_smith.jpg', // Replace with actual image URL
+      'name': 'Tejas',
+      'review': 'The pot and vase broke , Horrible'
     },
     {
-      'profilePic': 'assets/Jan-manch-logo.png', // Replace with actual image URL
-      'name': 'Alice Johnson',
-      'review': 'The best business I have dealt with so far.'
+      'profilePic': 'https://example.com/alice_johnson.jpg', // Replace with actual image URL
+      'name': 'Raushan',
+      'review': 'hewwo :3 ;3 <3 <3'
     },
     {
-      'profilePic': 'assets/Jan-manch-logo.png', // Replace with actual image URL
-      'name': 'Bob Lee',
-      'review': 'Exceptional customer service!'
+      'profilePic': 'https://example.com/bob_lee.jpg', // Replace with actual image URL
+      'name': 'Vihaan',
+      'review': 'Somebody cooked here'
     },
   ];
 
