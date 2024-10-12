@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'option.dart'; // Make sure option.dart is imported to use OptionsScreen
 import 'businesslandingpage.dart'; // Import the BusinessLandingPage
+import 'categories.dart'; // Import the CategoriesPage
 
 class LogPage extends StatefulWidget {
   const LogPage({super.key});
@@ -23,9 +24,10 @@ class _LogPageState extends State<LogPage> {
     super.dispose();
   }
 
+  // Function to validate form and submit
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // Form is valid, now navigate to the OptionsScreen
+      // If form is valid, navigate to OptionsScreen
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => OptionsScreen()), // Navigate to OptionsScreen
@@ -75,7 +77,7 @@ class _LogPageState extends State<LogPage> {
               TextFormField(
                 controller: _passwordController,
                 decoration: const InputDecoration(labelText: 'Password'),
-                obscureText: true,  // To hide the password input
+                obscureText: true, // To hide the password input
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your password';
@@ -84,22 +86,32 @@ class _LogPageState extends State<LogPage> {
                 },
               ),
               const SizedBox(height: 20),
-              // Change Login button to "Login as Customer" (leading to nowhere)
+              // "Login as Customer" button
               ElevatedButton(
                 onPressed: () {
-                  // Do nothing when this button is pressed
+                  // Validate the form first
+                  if (_formKey.currentState!.validate()) {
+                    // If valid, navigate to CategoriesPage
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CategoriesPage()), // Navigate to CategoriesPage
+                    );
+                  }
                 },
                 child: const Text('Login as Customer'),
               ),
               const SizedBox(height: 10), // Space between buttons
-              // New "Login as Business" button
+              // "Login as Business" button
               ElevatedButton(
                 onPressed: () {
-                  // Navigate to BusinessLandingPage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BusinessLandingPage()), // Navigate to BusinessLandingPage
-                  );
+                  // Validate the form first
+                  if (_formKey.currentState!.validate()) {
+                    // If valid, navigate to BusinessLandingPage
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BusinessLandingPage()), // Navigate to BusinessLandingPage
+                    );
+                  }
                 },
                 child: const Text('Login as Business'),
               ),
