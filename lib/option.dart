@@ -5,7 +5,7 @@ class OptionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Menu Options'),
+        title: const Text('Menu Options'),
         backgroundColor: Colors.blue,
       ),
       body: Center(
@@ -13,14 +13,14 @@ class OptionsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Select an Option:',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             MenuButton(
               title: 'Categories',
               onPressed: () {
@@ -31,7 +31,7 @@ class OptionsScreen extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             MenuButton(
               title: 'Listing',
               onPressed: () {
@@ -42,7 +42,7 @@ class OptionsScreen extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             MenuButton(
               title: 'Marketplace',
               onPressed: () {
@@ -71,16 +71,16 @@ class MenuButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-        primary: Colors.blue, // Set button color
-        onPrimary: Colors.white, // Set text color
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        backgroundColor: Colors.blue, // Use backgroundColor instead of primary
+        foregroundColor: Colors.white, // Use foregroundColor instead of onPrimary
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
       ),
       child: Text(
         title,
-        style: TextStyle(fontSize: 18),
+        style: const TextStyle(fontSize: 18),
       ),
     );
   }
@@ -92,9 +92,9 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Categories'),
+        title: const Text('Categories'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Categories Page', style: TextStyle(fontSize: 24)),
       ),
     );
@@ -107,9 +107,9 @@ class ListingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Listing'),
+        title: const Text('Listing'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Listing Page', style: TextStyle(fontSize: 24)),
       ),
     );
@@ -122,9 +122,9 @@ class MarketplaceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Marketplace'),
+        title: const Text('Marketplace'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Marketplace Page', style: TextStyle(fontSize: 24)),
       ),
     );

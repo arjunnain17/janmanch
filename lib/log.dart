@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'option.dart'; // Make sure option.dart is imported to use OptionsScreen
 
 class LogPage extends StatefulWidget {
   const LogPage({super.key});
@@ -23,13 +24,16 @@ class _LogPageState extends State<LogPage> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // Here, you can validate login credentials and proceed further
+      // Form is valid, now navigate to the OptionsScreen
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => OptionsScreen()), // Navigate to OptionsScreen
+      );
+
+      // Display the login data (optional)
       print('Name: ${_nameController.text}');
       print('Aadhaar: ${_aadharController.text}');
       print('Password: ${_passwordController.text}');
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Login successful!')),
-      );
     }
   }
 
