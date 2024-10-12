@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
 
-class CategoriesPage extends StatefulWidget {
+class CategoriesPage extends StatelessWidget {
   const CategoriesPage({super.key});
-
-  @override
-  _CategoriesPageState createState() => _CategoriesPageState();
-}
-
-class _CategoriesPageState extends State<CategoriesPage> {
-  // List of hover states for the 6 images
-  List<bool> _isHoveredList = List.filled(6, false);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Marketplace', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold))),
+        title: const Center(
+          child: Text(
+            'Marketplace',
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 20),
             const Text(
@@ -29,25 +27,25 @@ class _CategoriesPageState extends State<CategoriesPage> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 40),
-            
+
             // First row of images
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildImageButton('services.png', 0),
-                _buildImageButton('products.png', 1),
-                _buildImageButton('groceries.png', 2),
+                _buildImageButton(context, 'services.png'),
+                _buildImageButton(context, 'products.png'),
+                _buildImageButton(context, 'groceries.png'),
               ],
             ),
             const SizedBox(height: 40),
-            
+
             // Second row of images
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildImageButton('services2.png', 3),
-                _buildImageButton('products2.png', 4),
-                _buildImageButton('groceries2.png', 5),
+                _buildImageButton(context, 'services2.png'),
+                _buildImageButton(context, 'products2.png'),
+                _buildImageButton(context, 'groceries2.png'),
               ],
             ),
           ],
@@ -56,47 +54,30 @@ class _CategoriesPageState extends State<CategoriesPage> {
     );
   }
 
-  // Function to build each clickable image button with hover effect
-  Widget _buildImageButton(String imageName, int index) {
-    return MouseRegion(
-      onEnter: (_) {
-        setState(() {
-          _isHoveredList[index] = true;
-        });
+  // Function to create a clickable image button
+  Widget _buildImageButton(BuildContext context, String imageName) {
+    return GestureDetector(
+      onTap: () {
+        // Define the action when the button is tapped
+        print('Button with $imageName clicked');
       },
-      onExit: (_) {
-        setState(() {
-          _isHoveredList[index] = false;
-        });
-      },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        transform: _isHoveredList[index]
-            ? Matrix4.identity()..scale(1.1) // Scale up on hover
-            : Matrix4.identity()..scale(1.0), // Default scale
-        child: GestureDetector(
-          onTap: () {
-            // Handle the tap event (navigate or perform some action)
-          },
-          child: Container(
-            width: 150, // Width for large buttons
-            height: 150, // Height for large buttons
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/$imageName'),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: BorderRadius.circular(15), // Rounded corners
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: const Offset(0, 3), // Shadow position
-                ),
-              ],
-            ),
+      child: Container(
+        width: 150, // Set width for large buttons
+        height: 150, // Set height for large buttons
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/$imageName'),
+            fit: BoxFit.cover, // Cover the container with the image
           ),
+          borderRadius: BorderRadius.circular(15), // Rounded corners
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: const Offset(0, 3), // Shadow position
+            ),
+          ],
         ),
       ),
     );
